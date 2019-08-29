@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Hacathon</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-center">
+        <div id="app">
+            <h1 class="h3 mb-3 font-weight-normal">Please Enter the data</h1>
+
+            <label for="inputEmail" class="sr-only">Temperature</label>            
+            <select class="custom-select" id="inputGroupSelect01" v-model="env">
+                <option v-for="row in table" :value="row"> Temperature:- {{row.t}} || Pressure:- {{row.p}}</option>
+              </select>
+
+            <label for="inputEmail" class="sr-only">Weight</label>
+            <input v-model="weight" type="text" class="form-control mt-2" placeholder="Weight" required autofocus>
+
+            <label for="inputPassword" class="sr-only">Height</label>
+            <input v-model="height" type="text" class="form-control mt-2" placeholder="Height" required>
+            
+            <textarea v-if="left > 0" v-model="customeMessage" class="form-control" placeholder="Enter the message you want when Result is negtive" required></textarea>
+
+            
+            <h1>{{Vp}}</h1>
+            <p class="mt-5 mb-3 text-muted">&copy; {{message}}</p>
+
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                  message: 'Palestine Team *-*',
+                  height: 10,
+                  weight: 10,
+                  result:null,
+                  customeMessage:null,
+                  table:[
+                    {t:288.150,p:101325},
+                    {t:281.650,p:89874.6},
+                    {t:275.150,p:79495.2},
+                  ],
+                  env:{
+                    t:288.150,
+                    p:101325
+                  },
+                  p:5,
+                },
+                computed:{
+                    V(){
+                        return .082 * this.env.t / this.env.p
+                    },
+                    Vi(){
+                        return .082*this.env.t/.003
+                    },
+                    Da(){
+                        return 28.84/this.V
+                    },
+                    Dh(){
+                        return 2/this.Vi
+                    },
+                    left(){
+                        return this.Da - this.Dh
+                    },
+                    Vp(){
+                        if(this.left>0){
+                            return this.weight/this.left
+                        }else{
+                            return this.weight/this.left
+                        }
+                    }
+
+                },
+                methods:{
+                    
+                }
+              })
+        </script>
+</body>
+
+</html>
