@@ -41,7 +41,7 @@
 
 
             <label for="customRange2">Height = {{height}} [km]</label>
-            <input v-model="height" type="range" class="custom-range" min="0" max="10" id="customRange2">
+            <input v-model="height" type="range" class="custom-range" min="0" max="20" id="customRange2">
             
             <textarea v-if="left > 0" v-model="customeMessage" class="form-control" placeholder="Enter the message you want when Result is negtive" required></textarea>
 
@@ -57,7 +57,7 @@
             var app = new Vue({
                 el: '#app',
                 data: {
-                  message: 'Palestine Team *-*',
+                  message: 'Thanos Team *-*',
                   height: 10,
                   weight: null,
                   customeMessage:null,
