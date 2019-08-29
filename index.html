@@ -32,20 +32,16 @@
 
 <body class="text-center">
         <div id="app" class="form-signin">
-            <img class="mb-4" src="https://yt3.ggpht.com/a/AGF-l79Omhg9ldWKCm7WtyXS3bykThiiel9K5UWRpw=s288-c-k-c0xffffffff-no-rj-mo" alt="" width="72" height="72">
 
             <h1 class="h3 mb-3 font-weight-normal">Please Enter the data</h1>
 
             <label for="inputEmail" class="sr-only">Temperature</label>            
-            <select class="custom-select" id="inputGroupSelect01" v-model="env">
-                <option v-for="row in table" :value="row"> Temperature:- {{row.t}} || Pressure:- {{row.p}}</option>
-              </select>
-
             <label for="inputEmail" class="sr-only">Weight</label>
             <input v-model="weight" type="text" class="form-control mt-2" placeholder="Weight" required autofocus>
 
-            <label for="inputPassword" class="sr-only">Height</label>
-            <input v-model="height" type="text" class="form-control mt-2" placeholder="Height" required>
+
+            <label for="customRange2">Height = {{height}} [km]</label>
+            <input v-model="height" type="range" class="custom-range" min="0" max="10" id="customRange2">
             
             <textarea v-if="left > 0" v-model="customeMessage" class="form-control" placeholder="Enter the message you want when Result is negtive" required></textarea>
 
@@ -63,26 +59,34 @@
                 data: {
                   message: 'Palestine Team *-*',
                   height: 10,
-                  weight: 10,
-                  result:null,
+                  weight: null,
                   customeMessage:null,
                   table:[
-                    {t:288.150,p:101325},
-                    {t:281.650,p:89874.6},
-                    {t:275.150,p:79495.2},
-                  ],
-                  env:{
-                    t:288.150,
-                    p:101325
-                  },
-                  p:5,
+                    {t:288.150 , p:101325},
+                    {t:281.650 , p:89874.6},
+                    {t:275.150 , p:79495.2},
+                    {t:268.650 , p:70108.5},
+                    {t:262.150 , p:61640.2},
+                    {t:255.650 , p:54019.9},
+                    {t:249.150 , p:47181.0},
+                    {t:242.650 , p:41060.7},
+                    {t:236.150 , p:35599.8},
+                    {t:229.650 , p:30742.5},
+                    {t:223.150 , p:26436.3}
+                  ]
                 },
                 computed:{
+                    t(){
+                        return this.table[this.height].t
+                    },
+                    p(){
+                        return this.table[this.height].p
+                    },
                     V(){
-                        return .082 * this.env.t / this.env.p
+                        return .082 * this.t / this.p
                     },
                     Vi(){
-                        return .082*this.env.t/.003
+                        return .082*this.t/.003
                     },
                     Da(){
                         return 28.84/this.V
