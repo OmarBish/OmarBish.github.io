@@ -45,7 +45,7 @@
         
             
             <h1>{{Vp}}</h1>
-            <p v-if="left > 0" v-model="customeMessage" >{{customeMessage}}</p>
+            <p v-if="left > 0">{{customeMessage}}</p>
             <p class="mt-5 mb-3 text-muted">&copy; {{message}}</p>
 
         </div>
@@ -99,7 +99,8 @@
                     Vp(){
                         if(this.left>0){
                              
-                            return this.weight/this.left , this.customeMessage="sfdkjfs"
+                            return this.weight/this.left 
+                            this.customeMessage="sfdkjfs"
                         }else{
                             return this.weight/this.left
                         }
