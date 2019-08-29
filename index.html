@@ -43,11 +43,9 @@
             <label for="customRange2">Height = {{height}} [km]</label>
             <input v-model="height" type="range" class="custom-range" min="0" max="20" id="customRange2">
             
-            <textarea v-if="left > 0" v-model="customeMessage" class="form-control" placeholder="Enter the message you want when Result is negtive" required></textarea>
-
             
             <h1>{{Vp}}</h1>
-            <p>{{customeMessage}}</p>
+            <p  v-model="customeMessage" >{{customeMessage}}</p>
             <p class="mt-5 mb-3 text-muted">&copy; {{message}}</p>
 
         </div>
@@ -100,6 +98,7 @@
                     },
                     Vp(){
                         if(this.left>0){
+                            return this.customeMessage="sfdkjfs"
                             return this.weight/this.left
                         }else{
                             return this.weight/this.left
