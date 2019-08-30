@@ -40,9 +40,7 @@
             <input v-model="weight" type="text" class="form-control mt-2" placeholder="Weight" required autofocus>
 
 
-            <label for="customRange2">Height = {{height}} [km]</label>
-            <input v-model="height" type="range" class="custom-range" min="0" max="20" id="customRange2">
-
+            
             
             <h1>{{Vp}}</h1>
             <p>{{customeMessage}}</p>
@@ -56,39 +54,28 @@
                 el: '#app',
                 data: {
                   message: 'Thanos Team *-*',
-                  height: 10,
+                  height: 0,
                   weight: null,
                   customeMessage:null,
                   table:[
                     {t:288.150 , p:101325, Da:1.22500},
-                    {t:281.650 , p:89874.6,Da:1.11164},
-                    {t:275.150 , p:79495.2,Da:1.00649},
-                    {t:268.650 , p:70108.5,Da:0.909122},
-                    {t:262.150 , p:61640.2,Da:0.819129},
-                    {t:255.650 , p:54019.9,Da:0.736116},
-                    {t:249.150 , p:47181.0,Da:0.659697},
-                    {t:242.650 , p:41060.7,Da:0.589501},
-                    {t:236.150 , p:35599.8,Da:0.525168},
-                    {t:229.650 , p:30742.5,Da:0.466348},
-                    {t:223.150 , p:26436.3,Da:0.412707},
-                    {t:216.650 , p:22632.1,Da:0.363918},
                   ]
                 },
                 computed:{
                     t(){
-                        return this.table[this.height].t
+                        return this.table.t
                     },
                     p(){
-                        return this.table[this.height].p
+                        return this.table.p
                     },
                     V(){
                         return .082 * this.t / this.p
                     },
                     Vi(){
-                        return .082*this.t/.003
+                        return .082*this.t/this.p
                     },
                     Da(){
-                        return this.table[this.height].Da
+                        return this.table.Da
                     },
                                         Dh(){
                         return 2/this.Vi
