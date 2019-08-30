@@ -43,5 +43,6 @@ body {
   border-top-right-radius: 0;
 }
 .gram{
-  display: inline;
+  display: inline-block;
+  border: 1px solid red ;
 }
