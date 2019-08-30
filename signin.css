@@ -45,3 +45,7 @@ body {
 .gram{
   display: inline-block;
 }
+.t {
+  float: right;
+  display: inline-block;
+  /* margin-left: 200px; */}
