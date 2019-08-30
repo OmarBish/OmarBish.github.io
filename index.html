@@ -40,7 +40,9 @@
             <input v-model="weight" type="text" class="form-control mt-2" placeholder="Weight" required autofocus>
 
 
-            
+            <label for="customRange2">Height = {{height}} [km]</label>
+            <input v-model="height" type="range" class="custom-range" min="0" max="1" id="customRange2">
+
             
             <h1>{{Vp}}</h1>
             <p>{{customeMessage}}</p>
@@ -54,7 +56,7 @@
                 el: '#app',
                 data: {
                   message: 'Thanos Team *-*',
-                  height: 0,
+                  height: 10,
                   weight: null,
                   customeMessage:null,
                   table:[
@@ -63,10 +65,10 @@
                 },
                 computed:{
                     t(){
-                        return this.table.t
+                        return this.table[this.height].t
                     },
                     p(){
-                        return this.table.p
+                        return this.table[this.height].p
                     },
                     V(){
                         return .082 * this.t / this.p
@@ -75,7 +77,7 @@
                         return .082*this.t/this.p
                     },
                     Da(){
-                        return this.table.Da
+                        return this.table[this.height].Da
                     },
                                         Dh(){
                         return 2/this.Vi
@@ -85,13 +87,15 @@
                     },
                     Vp(){
                         if(this.left>0){
-                            return this.weight/this.left
                             this.customeMessage="success"
+
+                            return this.weight/this.left
 
                             
                         }else{
-                            return this.weight/this.left
                             this.customeMessage=null
+
+                            return this.weight/this.left
                         }
                     }
                 },
